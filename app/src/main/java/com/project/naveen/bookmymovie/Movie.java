@@ -1,10 +1,9 @@
 package com.project.naveen.bookmymovie;
 
 
-
-class Movie {
-
-private String movie_name,maovie_image,movie_description;
+public class Movie {
+private int movie_id;
+private String movie_name,maovie_poster_url;
 
     public String getMovie_name() {
         return movie_name;
@@ -14,19 +13,21 @@ private String movie_name,maovie_image,movie_description;
         this.movie_name = movie_name;
     }
 
-    public String getMaovie_image() {
-        return maovie_image;
+    public String getMaovie_poster_url() {
+        return maovie_poster_url;
     }
 
-    public void setMaovie_image(String maovie_image) {
-        this.maovie_image = maovie_image;
+    public void setMaovie_poster_url(String maovie_poster_url) {
+        this.maovie_poster_url = maovie_poster_url;
     }
 
-    public String getMovie_description() {
-        return movie_description;
+    public int getMovie_id() {
+        return movie_id;
     }
 
-    public void setMovie_description(String movie_description) {
-        this.movie_description = movie_description;
+    public void setMovie_id(int movie_id) {
+        this.movie_id = movie_id;
     }
+
+
 }

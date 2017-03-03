@@ -1,4 +1,4 @@
-package com.project.naveen.bookmymovie;
+package com.project.naveen.bookmymovie.utils;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

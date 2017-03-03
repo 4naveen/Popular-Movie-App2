@@ -6,21 +6,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.project.naveen.bookmymovie.utils.AppConfig;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 
-class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
-    Context context;
-    private ArrayList<Movie> movies;
-    int images[] = {R.drawable.movie_poster, R.drawable.movie_poster, R.drawable.movie_poster, R.drawable.movie_poster,
-            R.drawable.movie_poster, R.drawable.movie_poster, R.drawable.movie_poster, R.drawable.movie_poster, R.drawable.movie_poster};
-    String[] titles = {"Kabil", "Kabil", "Kabil", "Kabil"};
+public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
+    public Context context;
+    public ArrayList<Movie> movies;
 
-
-    MovieAdapter(Context context, ArrayList<Movie> movies) {
-       /* this.context = context;
-        this.movies = movies;*/
+    public MovieAdapter(Context context, ArrayList<Movie> movies) {
+        this.context = context;
+        this.movies = movies;
     }
 
     @Override
@@ -33,24 +33,29 @@ class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        for (int i = 0; i < images.length; i++) {
-            holder.movie_poster.setImageResource(images[i]);
 
-        }
+        Movie movie=movies.get(position);
+       //Log.i("image_url in adap",AppConfig.MOVIES_IMAGE_URL+movie.getMovie_poster_url());
+        Picasso.with(context)
+                .load(AppConfig.MOVIES_IMAGE_URL+movie.getMaovie_poster_url())
+                .placeholder(R.drawable.movie_poster)
+                .error(R.drawable.movie_poster)
+                .into(holder.movie_poster);
+       // holder.title.setText(movie.getMovie_name());
     }
 
     @Override
     public int getItemCount() {
-        return images.length;
+        return movies.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-
         ImageView movie_poster;
-
+        TextView title;
         ViewHolder(View itemView) {
             super(itemView);
-            movie_poster = (ImageView) itemView.findViewById(R.id.movie_poster);
+            movie_poster = (ImageView) itemView.findViewById(R.id.thumbnail);
+            //title=(TextView)itemView.findViewById(R.id.title);
         }
     }
 }
